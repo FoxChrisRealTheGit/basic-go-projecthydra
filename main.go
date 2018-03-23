@@ -18,5 +18,5 @@ func sroot(w http.ResponseWriter, r *http.Request){
 	logger := hlogger.GetInstance()
 	fmt.Fprintf(w, "Welcome to the Hydra Software system")
 
-	logger.Println("Recieved an http Get request on root url")
+	logger.Println("Recieved an http request on root url")
 }
