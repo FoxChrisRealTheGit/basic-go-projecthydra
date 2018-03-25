@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func main(){
+func main() {
 	logger := hlogger.GetInstance()
 	logger.Println("Starting Hydra web service")
 
@@ -14,7 +14,7 @@ func main(){
 	http.ListenAndServe(":8080", nil)
 }
 
-func sroot(w http.ResponseWriter, r *http.Request){
+func sroot(w http.ResponseWriter, r *http.Request) {
 	logger := hlogger.GetInstance()
 	fmt.Fprintf(w, "Welcome to the Hydra Software system")
 
