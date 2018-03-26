@@ -1,4 +1,4 @@
-package HYDRACONFIGURATOR
+package hydraconfigurator
 //entry point for package
 import (
 	"errors"
@@ -8,6 +8,7 @@ import (
 //will allow for other file formats
 const (
 	CUSTOM uint8 = iota
+	JSON
 )
 
 // if type is nto a struct then reflect cannot be set
@@ -28,6 +29,8 @@ func GetConfiguration(confType uint8, obj interface{}, filename string) (err err
 	switch confType{
 	case CUSTOM:
 		err = MarshalCustomConfig(mysRValue, filename)
+	case JSON:
+		err = decodeJSONConfig(obj, filename)
 	}
 	return err
 }

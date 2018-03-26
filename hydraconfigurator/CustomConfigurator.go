@@ -1,4 +1,4 @@
-package HYDRACONFIGURATOR
+package hydraconfigurator
 
 import (
 	"bufio"

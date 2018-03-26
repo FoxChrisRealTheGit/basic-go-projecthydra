@@ -2,21 +2,26 @@ package main
 
 import(
 	"fmt"
-	"MasteringGoTutorial/HYDRACONFIGURATOR"
+	"MasteringGoTutorial/HYDRA/hydraconfigurator"
 )
 
 type ConfS struct{
-	TS string `name:"testString"`
-	TB bool `name:"testBool"`
-	TF float64 `name:"testFloat"`
+	TS string `name:"testString" xml:"testString" json:"testString"`
+	TB bool `name:"testBool" xml:"testBool" json:"testBool"`
+	TF float64 `name:"testFloat" xml:"testFloat" json:"testFloat"`
 	TestInt int
 }
 
 func main(){
 	configstruct := new(ConfS)
-	HYDRACONFIGURATOR.GetConfiguration(HYDRACONFIGURATOR.CUSTOM, configstruct, "configfile.conf")
+
+	// hydraconfigurator.GetConfiguration(hydraconfigurator.CUSTOM, configstruct, "configfile.conf")
+	hydraconfigurator.GetConfiguration(hydraconfigurator.JSON, configstruct, "configfile.json")
+	// hydraconfigurator.GetConfiguration(hydraconfigurator.XML, configstruct, "configfile.xml")
 	fmt.Println(*configstruct)
 
+
+	//below are some basic tests to check if the data is correct
 	if configstruct.TB{
 		fmt.Println("bool is true")
 	}
