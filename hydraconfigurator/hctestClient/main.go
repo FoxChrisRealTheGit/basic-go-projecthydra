@@ -16,8 +16,8 @@ func main(){
 	configstruct := new(ConfS)
 
 	// hydraconfigurator.GetConfiguration(hydraconfigurator.CUSTOM, configstruct, "configfile.conf")
-	hydraconfigurator.GetConfiguration(hydraconfigurator.JSON, configstruct, "configfile.json")
-	// hydraconfigurator.GetConfiguration(hydraconfigurator.XML, configstruct, "configfile.xml")
+	// hydraconfigurator.GetConfiguration(hydraconfigurator.JSON, configstruct, "configfile.json")
+	hydraconfigurator.GetConfiguration(hydraconfigurator.XML, configstruct, "configfile.xml")
 	fmt.Println(*configstruct)
 
 

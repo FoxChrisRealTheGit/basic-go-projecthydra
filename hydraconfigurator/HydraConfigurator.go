@@ -9,6 +9,7 @@ import (
 const (
 	CUSTOM uint8 = iota
 	JSON
+	XML
 )
 
 // if type is nto a struct then reflect cannot be set
@@ -31,6 +32,8 @@ func GetConfiguration(confType uint8, obj interface{}, filename string) (err err
 		err = MarshalCustomConfig(mysRValue, filename)
 	case JSON:
 		err = decodeJSONConfig(obj, filename)
+	case XML:
+		err = decodeXMLConfig(obj, filename)
 	}
 	return err
 }
