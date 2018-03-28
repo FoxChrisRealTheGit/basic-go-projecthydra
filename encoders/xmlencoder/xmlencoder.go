@@ -8,34 +8,34 @@ import (
 )
 
 type CrewMember struct {
-	XMLName xml.Name `xml:"member"`
-	ID int `xml:"id,omitempty"`
-	Name string `xml:"name,attr"`
-	SecurityClearance int `xml:"clearance,attr"`
-	AccessCodes []string `xml:"codes>code"`
+	XMLName           xml.Name `xml:"member"`
+	ID                int      `xml:"id,omitempty"`
+	Name              string   `xml:"name,attr"`
+	SecurityClearance int      `xml:"clearance,attr"`
+	AccessCodes       []string `xml:"codes>code"`
 }
 
-type ShipInfo struct{
-	XMLName xml.Name `xml:"ship"`
-	ShipID int `xml:"ShipInfo>ShipID"`
-	ShipClass string `xml"ShipInfo>ShipClass"`
-	Captain CrewMember
+type ShipInfo struct {
+	XMLName   xml.Name `xml:"ship"`
+	ShipID    int      `xml:"ShipInfo>ShipID"`
+	ShipClass string   `xml"ShipInfo>ShipClass"`
+	Captain   CrewMember
 }
 
-func main(){
+func main() {
 	file, err := os.Create("xmlfile.xml")
-	if err != nil{
+	if err != nil {
 		log.Fatal("Could not create the file", err)
 	}
 
 	defer file.Close()
 
 	//fill some data
-	cm:= CrewMember{Name: "name", SecurityClearance: 10, AccessCodes: []string{"ADA", "LAL"}}
+	cm := CrewMember{Name: "name", SecurityClearance: 10, AccessCodes: []string{"ADA", "LAL"}}
 	si := ShipInfo{ShipID: 1, ShipClass: "Fighter", Captain: cm}
 
 	b, err := xml.MarshalIndent(&si, " ", "	")
-	if err != nil{
+	if err != nil {
 		fmt.Println("error: ", err)
 	}
 	fmt.Println(xml.Header, string(b))
@@ -43,7 +43,7 @@ func main(){
 	enc := xml.NewEncoder(file)
 	enc.Indent(" ", "	")
 	enc.Encode(si)
-	if err != nil{
+	if err != nil {
 		log.Fatal("Could not encode xml file", err)
 	}
 

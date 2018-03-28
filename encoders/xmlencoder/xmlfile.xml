@@ -4,9 +4,9 @@
  	</ShipInfo>
  	<ShipClass>Fighter</ShipClass>
  	<member name="name" clearance="10">
- 		<code>
+ 		<codes>
  			<code>ADA</code>
  			<code>LAL</code>
- 		</code>
+ 		</codes>
  	</member>
  </ship>
